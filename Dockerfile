@@ -15,5 +15,7 @@ RUN  git clone https://github.com/isuftin/sample-tomcat.git
 RUN cd sample-tomcat/ && \
     mvn clean install && \
     mv target/sample-tomcat-1.0-SNAPSHOT.war /apache-tomcat-8.0.24/webapps/sample-tomcat.war
-    
-RUN /apache-tomcat-8.0.24/bin/catalina.sh start && tail -F /apache-tomcat-8.0.24/logs/catalina.out
+
+COPY start.sh .
+
+CMD ["./start.sh"]
